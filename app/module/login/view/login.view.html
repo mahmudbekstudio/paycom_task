@@ -1,0 +1,15 @@
+<div class="container">
+	<div class="login-form">
+		<h2 class="form-title">PAYCOM</h2>
+		<div class="input-group input-row" [class.has-error]="error.phone">
+			<span class="input-group-addon">+{{phonePrefix}}</span>
+			<input [disabled]="loading" [(ngModel)]="form.phone" (keyup)="phoneKeyup()" [maxlength]="phoneMaxLength" name="phone" class="form-control" placeholder="Номер телефона" required="" autofocus="" type="phone">
+		</div>
+		<div [hidden]="!phoneExist">
+			<div class="input-row" [class.has-error]="error.pass">
+				<input [disabled]="loading" [(ngModel)]="form.pass" name="pass" class="form-control" placeholder="Пароль" required="" type="password">
+			</div>
+			<button [disabled]="loading" (click)="signIn()" class="btn btn-link btn-block" type="submit">Войти</button>
+		</div>
+	</div>
+</div>
