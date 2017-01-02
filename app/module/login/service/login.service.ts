@@ -7,12 +7,15 @@ export class LoginService {
 
     constructor(public userService: UserService) {}
 
-    public check(login: string, pass: string): boolean {
-        let item = this.userService.findBy('login', login);
-        item = item[0];
+    public check(login: string, pass: string): any {
+        let items = this.userService.findBy('login', login);
 
-        if(item.password === pass) {
-            return item;
+        if(items.length) {
+            let userItem = items[0];
+
+            if(userItem.password === pass) {
+                return userItem;
+            }
         }
 
         return false;

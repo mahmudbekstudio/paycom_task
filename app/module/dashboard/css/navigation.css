@@ -1,0 +1,12 @@
+.navigation-item a {
+	display: block;
+	padding: 1px 10px;
+	color: #474f59;
+}
+
+.navigation-item a:hover,
+.navigation-item a.active {
+	text-decoration: none;
+	background-color: #F3F3F4;
+	color: #000;
+}

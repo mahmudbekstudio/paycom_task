@@ -40,7 +40,7 @@ export class AuthenticationService implements CanActivate {
     }
 
     private initStorage(): void {
-        if(localStorage.auth && typeof localStorage.auth === 'null') {
+        if(this.getStorage() !== null) {
             let profile = this.getStorage();
             this.setAuth(true, profile);
         } else {
@@ -49,11 +49,11 @@ export class AuthenticationService implements CanActivate {
     }
 
     private updateStorage(): void {
-        localStorage.auth = JSON.stringify(this.authedProfile);
+        localStorage.setItem('auth', JSON.stringify(this.authedProfile));
     }
 
     private getStorage(): UserModel {
-        return JSON.parse(localStorage.auth);
+        return JSON.parse(localStorage.getItem('auth'));
     }
 
     getNowTime(): number {

@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 
-import { DashboardRoutes } from './module/dashboard/dashboard.routes';
 import { LoginRoutes } from './module/login/login.routes';
+import { NotFoundComponent } from './notfound.component';
 
 export const routes: Routes = [].concat(
-    DashboardRoutes,
-    LoginRoutes
+    LoginRoutes,
+    {path: '**', component: NotFoundComponent}
 );

@@ -1,0 +1,22 @@
+<div class="dashboard">
+	<div class="top-nav riw">
+		<div class="col-xs-6 text-left">
+			<div class="top-nav-title">PAYCOM <i class="fa fa-bars toggle-btn" data-toggle="collapse" data-target="#menu-content"></i></div>
+		</div>
+		<div class="col-xs-6 text-right">
+			{{config.authentication.profile.name}}<span class="hidden-xs"> {{config.authentication.profile.surname}}</span>
+			<a href="#" class="btn btn-link btn-lg" (click)="logout($event)"><span class="hidden-xs">Выйти </span><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+		</div>
+	</div>
+	<div class="menu-list">
+
+		<ul id="menu-content" class="menu-content collapse out">
+			<dashboard-navigation></dashboard-navigation>
+		</ul>
+	</div>
+	<div class="dashboard-container">
+		<router-outlet></router-outlet>
+
+	</div>
+	<div class="footer">PAYCOM &copy;</div>
+</div>

@@ -1,0 +1,5 @@
+<li *ngFor="let item of menuList" class="navigation-item">
+	<a [routerLink]="item.link" routerLinkActive="active">
+		<i class="fa fa-{{item.icon}}"></i> {{item.title}}
+	</a>
+</li>

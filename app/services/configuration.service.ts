@@ -4,9 +4,7 @@ import { AuthenticationService } from './authentication.service';
 
 @Injectable()
 export class ConfigurationService {
-    constructor(private authentication: AuthenticationService) {}
+    public dashboardMenu: string = '';
 
-    get auth() {
-        return this.authentication.auth;
-    }
+    constructor(public authentication: AuthenticationService) {}
 }

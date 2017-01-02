@@ -2,6 +2,8 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
+import { NotFoundComponent } from './notfound.component';
+
 import { LoginModule } from './module/login/login.module';
 import { DashboardModule } from './module/dashboard/dashboard.module';
 
@@ -24,7 +26,7 @@ import { UserService } from './services/user.service';
     LoginModule,
     DashboardModule
   ],
-  declarations: [ AppComponent ],
+  declarations: [ AppComponent, NotFoundComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
