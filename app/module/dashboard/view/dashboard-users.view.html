@@ -1,0 +1,94 @@
+<div class="container-fluid">
+	<div class="custom-table row">
+		<div class="custom-table-header">
+			<div class="col-sm-4">
+				<div class="input-group">
+					<input [(ngModel)]="searchEmployee" (keyup)="keyupSearch()" class="form-control" name="searchEmployee" type="text" aria-describedby="search-input-icon">
+					<span class="input-group-addon" id="search-input-icon"><i class="fa fa-search"></i></span>
+				</div>
+			</div>
+			<div class="col-sm-8 text-right"><a href="#" (click)="showEmployeeForm($event)"><i class="fa fa-user-plus" aria-hidden="true"></i> Добавить сотрудника</a></div>
+		</div>
+
+		<div class="custom-table-head hidden-sm hidden-xs col-xs-12">
+			<div class="custom-table-row row">
+				<div class="col-xs-10">
+					<div class="row">
+						<div class="col-md-4 custom-table-th">ФИО</div>
+						<div class="col-md-2 custom-table-th">Должность</div>
+						<div class="col-md-3 custom-table-th">Телефон</div>
+						<div class="col-md-3 custom-table-th">Email</div>
+					</div>
+				</div>
+				<div class="col-xs-2">&nbsp;</div>
+			</div>
+		</div>
+		<div class="custom-table-body col-xs-12">
+			<div *ngFor="let item of list" class="custom-table-row row">
+				<div class="col-xs-10">
+					<div class="row">
+						<div class="col-md-4 custom-table-td"><span class="visible-xs-inline visible-sm-inline title">ФИО: </span>{{item.name}} {{item.surname}} {{item.middlename}}</div>
+						<div class="col-md-2 custom-table-td"><span class="visible-xs-inline visible-sm-inline title">Должность: </span>{{item.job_title}}</div>
+						<div class="col-md-3 custom-table-td"><span class="visible-xs-inline visible-sm-inline title">Телефон: </span>+{{phonePrefix}} {{formatPhone(item.phone)}}</div>
+						<div class="col-md-3 custom-table-td"><span class="visible-xs-inline visible-sm-inline title">Email: </span>{{item.email}}</div>
+					</div>
+				</div>
+				<div class="col-xs-2 text-center">
+					<a (click)="editEmployee($event, item)" href="#" class="action-icon"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+					<a (click)="removeEmployee($event, item)" href="#" class="action-icon"><i class="fa fa-times" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addNewEmployeePopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button #closeModalForm type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">{{employeeForm.title}}</h4>
+			</div>
+			<div class="modal-body">
+				<input type="hidden" [(ngModel)]="employeeForm.oldPhone" name="oldPhone">
+				<div [hidden]="!employeeForm.error.length" class="alert alert-danger" role="alert">
+					<div *ngFor="let errorItem of employeeForm.error"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> {{errorItem}}</div>
+				</div>
+				<div class="form-group">
+					<label for="employeePhone">Телефон</label>
+					<div class="input-group input-row">
+						<span class="input-group-addon">+{{phonePrefix}}</span>
+						<input [(ngModel)]="employeeForm.employee.phone" name="phone" required type="text" class="form-control phone-mask" id="employeePhone" placeholder="Телефон">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="employeeName">Имя</label>
+					<input [(ngModel)]="employeeForm.employee.name" required type="text" class="form-control" id="employeeName" placeholder="Имя">
+				</div>
+				<div class="form-group">
+					<label for="employeeSurname">Фамилия</label>
+					<input [(ngModel)]="employeeForm.employee.surname" required type="text" class="form-control" id="employeeSurname" placeholder="Фамилия">
+				</div>
+				<div class="form-group">
+					<label for="employeeMiddlename">Отчество</label>
+					<input [(ngModel)]="employeeForm.employee.middlename" type="text" class="form-control" id="employeeMiddlename" placeholder="Отчество">
+				</div>
+				<div class="form-group">
+					<label for="employeeEmail">E-mail</label>
+					<input [(ngModel)]="employeeForm.employee.email" required type="email" class="form-control" id="employeeEmail" placeholder="E-mail">
+				</div>
+				<div class="form-group">
+					<label for="employeeJobtitle">Должность</label>
+					<select [(ngModel)]="employeeForm.employee.job_title" class="form-control" id="employeeJobtitle">
+						<option *ngFor="let item of jobTitle" [value]="item">{{item}}</option>
+					</select>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+				<button (click)="addEmployee() ? closeModalForm.click() : null" type="button" class="btn btn-primary">{{employeeForm.submitBtn}}</button>
+			</div>
+		</div>
+	</div>
+</div>

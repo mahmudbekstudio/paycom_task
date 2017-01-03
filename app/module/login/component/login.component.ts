@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit{
     }
 
     cleanVal(val: string): string {
-        return val.replace(/\(|\)| |\-/gi, '');
+        return val.replace(/[^0-9\.]+/g, '');
     }
 
     signIn(): void {

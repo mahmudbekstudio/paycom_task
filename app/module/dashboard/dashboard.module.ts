@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { DashboardRoutes } from './dashboard.routes';
 
@@ -10,13 +11,17 @@ import {
     StatisticsComponent,
     PaymentsComponent,
     ProductsComponent,
-    UsersComponent
+    UsersComponent,
+    CashboxComponent,
+    IndexComponent,
+    NotFoundComponent
 } from './component/index';
 
 @NgModule({
     imports: [
         BrowserModule,
         RouterModule.forRoot(DashboardRoutes),
+        FormsModule,
     ],
     declarations: [
         DashboardComponent,
@@ -24,7 +29,10 @@ import {
         StatisticsComponent,
         PaymentsComponent,
         ProductsComponent,
-        UsersComponent
+        UsersComponent,
+        CashboxComponent,
+        IndexComponent,
+        NotFoundComponent
     ],
     exports: [
         DashboardComponent,

@@ -12,13 +12,15 @@ import { routes } from './app.routes';
 import { ConfigurationService } from './services/configuration.service';
 import { AuthenticationService, AuthenticationLogin } from './services/authentication.service';
 import { UserService } from './services/user.service';
+import { EmployeeService } from './services/employee.service';
 
 @NgModule({
   providers: [
     ConfigurationService,
     AuthenticationService,
     AuthenticationLogin,
-    UserService
+    UserService,
+    EmployeeService
   ],
   imports:      [
     BrowserModule,

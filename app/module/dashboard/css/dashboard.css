@@ -13,7 +13,8 @@
 	background-color: #FFF;
 	border-bottom: 1px solid #f3f3f4;
 	line-height: 49px;
-	font-size: 20px;
+	font-size: 17px;
+	z-index: 100;
 }
 
 .footer {
@@ -33,6 +34,11 @@
 .top-nav-title {
 	font-size: 25px;
 	font-weight: bold;
+}
+
+.top-nav-title a {
+	color: #474f59;
+	text-decoration: none;
 }
 
 .top-nav .toggle-btn {
@@ -61,6 +67,8 @@
 .dashboard-container {
 	border-left: 250px #FFF solid;
 	min-height: 100%;
+	padding: 10px;
+	margin-bottom: 50px;
 }
 
 .menu-list {
@@ -84,7 +92,7 @@
 	}
 
 	.top-nav-title {
-		font-size: 20px;
+		font-size: 19px;
 	}
 
 	.dashboard-container {

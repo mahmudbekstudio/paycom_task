@@ -4,3 +4,6 @@ export * from './statistics.component';
 export * from './payments.compoenent';
 export * from './products.component';
 export * from './users.component';
+export * from './cashbox.component';
+export * from './index.component';
+export * from './notfound.component';

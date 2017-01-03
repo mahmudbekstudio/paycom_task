@@ -5,7 +5,10 @@ import {
     UsersComponent,
     PaymentsComponent,
     StatisticsComponent,
-    ProductsComponent
+    ProductsComponent,
+    CashboxComponent,
+    IndexComponent,
+    NotFoundComponent
 } from './component/index';
 import { AuthenticationService } from '../../services/authentication.service';
 
@@ -17,6 +20,10 @@ export const DashboardRoutes: Routes = [
         canActivate: [ AuthenticationService ],
         children: [
             {
+                path: '',
+                component: IndexComponent
+            },
+            {
                 path: 'statistics',
                 component: StatisticsComponent
             },
@@ -24,7 +31,10 @@ export const DashboardRoutes: Routes = [
                 path: 'payments',
                 component: PaymentsComponent
             },
-            //kass
+            {
+                path: 'cashbox',
+                component: CashboxComponent
+            },
             {
                 path: 'products',
                 component: ProductsComponent
@@ -32,6 +42,10 @@ export const DashboardRoutes: Routes = [
             {
                 path: 'users',
                 component: UsersComponent
+            },
+            {
+                path: '**',
+                component: NotFoundComponent
             },
         ]
     },
