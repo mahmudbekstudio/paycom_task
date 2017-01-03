@@ -56,7 +56,7 @@ export class UsersComponent implements OnInit {
     showEmployeeForm(e: any): void {
         e.preventDefault();
         this.resetEmployeeForm();
-        $('#addNewEmployeePopup').modal('show');
+        jQuery('#addNewEmployeePopup').modal('show');
     }
 
     addEmployee(): boolean {
@@ -101,7 +101,7 @@ export class UsersComponent implements OnInit {
         }
     }
 
-    private editEmployeeAction(result): void {
+    private editEmployeeAction(result: boolean): boolean {
         if(this.employeeForm.oldPhone === this.cleanVal(this.employeeForm.employee.phone)) {
             this.employeeForm.employee.phone = this.phonePrefix + this.cleanVal(this.employeeForm.employee.phone);
             this.employeeService.updateBy(this.employeeForm.employee, this.phonePrefix + this.employeeForm.oldPhone);
@@ -127,10 +127,11 @@ export class UsersComponent implements OnInit {
         return result;
     }
 
-    private addEmployeeAction(result: boolean): void {
-        empl.phone = this.phonePrefix + this.cleanVal(empl.phone);
+    private addEmployeeAction(result: boolean): boolean {
+        this.employeeForm.employee.phone = this.phonePrefix + this.cleanVal(this.employeeForm.employee.phone);
         if(!this.employeeService.add(this.employeeForm.employee)) {
             result = false;
+            this.employeeForm.employee.phone = this.formatPhone(this.employeeForm.employee.phone);
             this.employeeForm.error.push('Пользователь с этим телефоном существует');
         } else {
             this.resetEmployeeForm();

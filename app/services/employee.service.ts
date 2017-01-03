@@ -12,7 +12,7 @@ export class EmployeeService {
         return result === null ? [] : result;
     }
 
-    set employees(val: EmployeeModel[]): void {
+    set employees(val: EmployeeModel[]) {
         localStorage.setItem('employees', JSON.stringify(val));
     }
 
@@ -76,7 +76,7 @@ export class EmployeeService {
 
     public deleteBy(val: string, key: string = null): boolean {
         let list = this.employees;
-        let findKey = null;
+        let findKey: any = null;
         key = key === null ? this.uniqueByField : key;
 
         for(let i = 0; i < list.length; i++) {
@@ -98,7 +98,7 @@ export class EmployeeService {
 
     public updateBy(newItem: EmployeeModel, val: string, key: string = null): boolean {
         let list = this.employees;
-        let findKey = null;
+        let findKey: any = null;
         key = key === null ? this.uniqueByField : key;
 
         for(let i = 0; i < list.length; i++) {
